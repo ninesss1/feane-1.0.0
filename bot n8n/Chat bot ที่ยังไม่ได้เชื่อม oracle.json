@@ -1,0 +1,173 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7038eb93-e96c-46a1-b084-5c4211c3f6b0",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "fadd20d3-23cd-497e-9497-db0846177a70",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        1632,
+        960
+      ],
+      "webhookId": "7038eb93-e96c-46a1-b084-5c4211c3f6b0"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {
+          "systemMessage": "คุณเป็นผู้ช่วยอัจฉริยะที่สามารถตอบคำถามและค้นหาข้อมูลจากฐานข้อมูล Oracle ได้\n\nเมื่อผู้ใช้ถามคำถามที่ต้องการข้อมูลจากฐานข้อมูล ให้ใช้เครื่องมือ Oracle Database Tool เพื่อค้นหาข้อมูล\n\nตอบคำถามอย่างชัดเจน เป็นมิตร และให้ข้อมูลที่ถูกต้อง"
+        }
+      },
+      "id": "e20c552c-e0e1-4d22-8401-2dcef07e5205",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "98d9f02d-e2ec-4bab-828e-c815f954334d",
+      "name": "Google Gemini Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        1184
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "vkWveI2ZahNorl9K",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.sessionId }}"
+      },
+      "id": "4804ed94-2d4b-4910-8de0-8644188d982b",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1984,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Query Oracle database to retrieve information. Use this tool when user asks questions that require database data.",
+        "operation": "execute",
+        "query": "={{ $fromAI(\"query\", \"SQL query to execute on Oracle database\", \"string\") }}",
+        "options": {}
+      },
+      "id": "a51a0a77-2fc3-494a-9a89-d5edb19eeeb1",
+      "name": "Oracle Database Tool",
+      "type": "n8n-nodes-base.oracleDatabaseTool",
+      "typeVersion": 1,
+      "position": [
+        2112,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"reply\": $json.output } }}",
+        "options": {}
+      },
+      "id": "eec3a231-8ca5-4add-98ab-1ad4a7445314",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        2320,
+        960
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oracle Database Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "506edea8-65e8-4055-b96e-e735e7488a24",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "136a303576af9814a39754da3ab7afe964efb0c24a6743095f50e8f1160b7b82"
+  },
+  "id": "xuYt1gt3mpu4o1on",
+  "tags": []
+}
