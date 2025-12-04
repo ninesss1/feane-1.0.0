@@ -29,10 +29,10 @@ export const options = {
         { duration: '30s', target: 50 },  // ภายใน 30 วินาที เพิ่มผู้ใช้เป็น 50 คน
         { duration: '30s', target: 100 }, // ภายใน 30 วินาที เพิ่มผู้ใช้เป็น 100 คน
         { duration: '30s', target: 200 }, // รักษาระดับผู้ใช้ที่ 200 คน เป็นเวลา 30 วินาที
-        { duration: '30s', target: 300 }, // เพิ่มผู้ใช้เป็น 300 คน
-        { duration: '30s', target: 200 }, // ลดผู้ใช้ลง
+        // { duration: '30s', target: 300 }, // เพิ่มผู้ใช้เป็น 300 คน
+        // { duration: '30s', target: 200 }, // ลดผู้ใช้ลง
         { duration: '30s', target: 150 }, // ลดผู้ใช้ลง
-        { duration: '30s', target: 100 },  // ลดผู้ใช้ลง
+        // { duration: '30s', target: 100 },  // ลดผู้ใช้ลง
         { duration: '30s', target: 50 },   // ลดผู้ใช้ลง
         { duration: '30s', target: 0 },   // หยุดการทดสอบ
     ],
