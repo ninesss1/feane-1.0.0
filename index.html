@@ -195,40 +195,41 @@
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+
+  <!-- 
+
+
+
+   ไม่ใช้ ด้านบนเอามาประดับความเข้าใจ Chat box
+
+
+   -->
+
+
   <!-- custom js -->
-   
-<!-- ^
-     |  ไม่เกี่ยวข้อง
-     | -->
-<!-- 
-//////////////////////////////////////////////////////////////////////
-/////////////   ด้านบนไม่เกี่ยว     /////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////// -->
-
-<!-- เป็นแบบ buble ball ปุ่กด เพื่อแสดงช่องแชท  🎓สามารถเปลี่ยนแปลงได้ตรามต้องการ🎓  --> 
-
   <script src="js/boxstye.js"></script>
   <script src='js/main.js'></script>
-  <!-- <script src="js/stye.js"></script> -->
+  <!-- CSS ต้อง load ก่อน JS ที่ใช้มัน -->
   <link href="css/main.css" rel="stylesheet" />
-  <script href="js/stye.js"></script>
-
 
   <!-- Chat widget replaced with the requested chat-box structure -->
   <div class="chat-box collapsed" aria-hidden="true">
-    <div class="header" role="button" tabindex="0" aria-label="เปิด/ปิด แชท"></div> <!-- title via ::before -->
+    <div class="header" role="button" tabindex="0" aria-label="เปิด/ปิด แชท"></div>
     <div class="messages" id="messages">
       <div class="chat-empty" id="chatEmpty">
         <img class="img-show-box-chat" src="หนอนv5.png" alt="ภาพการ์ตูนหนังสือ">
       </div>
     </div>
     <div class="input-area">
+      <input type="file" id="chatImageInput" accept="image/*" style="display:none;" aria-label="แนบรูปภาพ">
+      <!-- <button id="chatImageBtn" type="button"
+        style="background:linear-gradient(135deg, #db2777, #f5a9d0);padding:9px 12px;border:none;color:#fff;border-radius:6px;cursor:pointer;font-size:16px;transition:all 0.2s ease;"
+        title="แนบรูป" aria-label="เลือกรูปภาพ">🖼️</button> ส่วนรูปภาพยังไม่ได้ทำ --> 
       <input id="msg" type="text" placeholder="พิมพ์ข้อความของคุณที่นี่..." autocomplete="off"
         aria-label="พิมพ์ข้อความเพื่อส่ง" />
       <button id="send" aria-label="ส่งข้อความ">ส่ง</button>
     </div>
   </div>
-
 
   <script>
     (function () {
@@ -280,6 +281,9 @@
       // start collapsed
       setCollapsed(true);
     })();
+  </script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
 </body>
 

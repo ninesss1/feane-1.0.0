@@ -88,6 +88,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const tb = document.createElement('div');
         tb.id = 'typing-bubble';
         tb.className = 'bubble bot typing';
+        tb.innerHTML = `
+            <img class="avatar bot-avatar" src="images/หนอน.png" alt="อ่านจัง" onerror="this.style.display='none'">
+            <div class="text">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
+        `;
         msgBox.appendChild(tb);
         msgBox.scrollTop = msgBox.scrollHeight;
     }

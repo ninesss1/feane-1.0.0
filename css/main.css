@@ -1,4 +1,5 @@
 /* Chat styling - Chulalongkorn Pink Theme */
+/* Chat styling - Soft Chulalongkorn Pink Theme */
 .chat-box {
   position: fixed;
   right: 20px;
@@ -6,10 +7,17 @@
   width: 360px;
   max-width: 90vw;
   max-height: 70vh;
-  background: linear-gradient(135deg, #faf7f5 0%, #fff5f8 100%);
+
+  /* สีชมพูอ่อนลง */
+  background: linear-gradient(135deg, #fdfbfa 0%, #fff8fb 100%);
+
   border-radius: 16px;
-  box-shadow: 0 10px 50px rgba(219, 39, 119, 0.12), 0 0 30px rgba(236, 112, 172, 0.08);
-  overflow: hidden;
+
+  /* เงาอ่อนลง */
+  box-shadow: 0 8px 40px rgba(219, 39, 119, 0.08),
+              0 0 20px rgba(236, 112, 172, 0.06);
+
+overflow: hidden;
   transition: all 0.3s ease;
   font-family: 'Segoe UI', Arial, sans-serif;
   z-index: 1000;
@@ -17,8 +25,9 @@
   flex-direction: column;
 }
 
+
 .chat-box:hover {
-  box-shadow: 0 15px 60px rgba(219, 39, 119, 0.2), 0 0 40px rgba(236, 112, 172, 0.12);
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2), 0 0 40px rgba(10, 10, 10, 0.12);
   transform: translateY(-4px);
 }
 
@@ -199,7 +208,7 @@
   object-fit: cover;
   flex-shrink: 0;
   border: 2.5px solid #db2777;
-  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.15), 0 0 8px rgba(236, 112, 172, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 8px rgba(236, 112, 172, 0.1);
 }
 
 .bot-avatar {
@@ -376,4 +385,93 @@
     bottom: 20px;
     border-radius: 50%;
   }
+}
+
+/* Typing bubble styles */
+.bubble.typing .text {
+  background: linear-gradient(135deg, #fff5f8, #ffe8f0) !important;
+  color: #db2777 !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px !important;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #db2777;
+  animation: typingAnimation 1.4s infinite;
+  display: inline-block;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%, 60%, 100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+/* Alternative: Thinking animation */
+.bubble.typing::before {
+  content: "💭";
+  position: absolute;
+  font-size: 20px;
+  animation: thinkingFloat 2s ease-in-out infinite;
+  right: -10px;
+  top: -10px;
+  z-index: 10;
+}
+
+@keyframes thinkingFloat {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-15px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Pulse effect for thinking */
+.bubble.bot.typing {
+  animation: thinkingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes thinkingPulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(219, 39, 119, 0.08);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(236, 112, 172, 0.2);
+  }
+}
+
+/* Spinning loader alternative */
+.typing-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(219, 39, 119, 0.2);
+  border-radius: 50%;
+  border-top-color: #db2777;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
