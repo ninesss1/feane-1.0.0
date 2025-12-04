@@ -1,8 +1,8 @@
 // main.js - เวอร์ชันสมบูรณ์ล่าสุด (พร้อม avatar ทุกข้อความ + อ่านจังมาสคอต)
 
 // เซิฟเวอร์ docker ทดสอบ
-const N8N_WEBHOOK = "http://localhost:5678/webhook-test/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*ทดสอบ*/
-// const N8N_WEBHOOK = "http://localhost:5678/webhook/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*จริง*/
+// const N8N_WEBHOOK = "http://localhost:5678/webhook-test/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*ทดสอบ*/
+const N8N_WEBHOOK = "http://localhost:5678/webhook/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*จริง*/
 
 
 
