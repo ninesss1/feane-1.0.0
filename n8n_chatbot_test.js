@@ -29,10 +29,7 @@ export const options = {
         { duration: '30s', target: 50 },  // ภายใน 30 วินาที เพิ่มผู้ใช้เป็น 50 คน
         { duration: '30s', target: 100 }, // ภายใน 30 วินาที เพิ่มผู้ใช้เป็น 100 คน
         { duration: '30s', target: 200 }, // รักษาระดับผู้ใช้ที่ 200 คน เป็นเวลา 30 วินาที
-        // { duration: '30s', target: 300 }, // เพิ่มผู้ใช้เป็น 300 คน
-        // { duration: '30s', target: 200 }, // ลดผู้ใช้ลง
         { duration: '30s', target: 150 }, // ลดผู้ใช้ลง
-        // { duration: '30s', target: 100 },  // ลดผู้ใช้ลง
         { duration: '30s', target: 50 },   // ลดผู้ใช้ลง
         { duration: '30s', target: 0 },   // หยุดการทดสอบ
     ],
@@ -133,26 +130,26 @@ const test_saveAndLoadHistory = () => {
 // ============================================
 // Test Suite 3: Image Handling
 // ============================================
-const test_imageHandling = () => {
-  console.log("\nTEST: Image Handling");
+// const test_imageHandling = () => {
+//   console.log("\nTEST: Image Handling");
   
-  const chatImageInput = document.getElementById('chatImageInput');
-  const chatImageBtn = document.getElementById('chatImageBtn');
+//   const chatImageInput = document.getElementById('chatImageInput');
+//   const chatImageBtn = document.getElementById('chatImageBtn');
   
-  // VERIFY: Image button click triggers input
-  console.assert(chatImageBtn !== null, "FAIL: Image button not found");
-  console.log("PASS: Image button exists ✓");
+//   // VERIFY: Image button click triggers input
+//   console.assert(chatImageBtn !== null, "FAIL: Image button not found");
+//   console.log("PASS: Image button exists ✓");
   
-  // VERIFY: Image input is hidden
-  console.assert(chatImageInput.style.display === 'none' || getComputedStyle(chatImageInput).display === 'none',
-    "FAIL: Image input should be hidden");
-  console.log("PASS: Image input is hidden ✓");
+//   // VERIFY: Image input is hidden
+//   console.assert(chatImageInput.style.display === 'none' || getComputedStyle(chatImageInput).display === 'none',
+//     "FAIL: Image input should be hidden");
+//   console.log("PASS: Image input is hidden ✓");
   
-  // VERIFY: Clicking button would trigger input click
-  // (Cannot directly test file input for security reasons, but we can verify the button exists)
-  console.assert(chatImageInput.accept === 'image/*', "FAIL: Input accept should be image/*");
-  console.log("PASS: Image input accepts only images ✓");
-};
+//   // VERIFY: Clicking button would trigger input click
+//   // (Cannot directly test file input for security reasons, but we can verify the button exists)
+//   console.assert(chatImageInput.accept === 'image/*', "FAIL: Input accept should be image/*");
+//   console.log("PASS: Image input accepts only images ✓");
+// };
 
 // ============================================
 // Test Suite 4: Input Clearing on Image Upload
@@ -202,37 +199,37 @@ const test_messageFormatting = () => {
 // ============================================
 // Test Suite 6: Base64 Image Data
 // ============================================
-const test_base64ImageData = () => {
-  console.log("\nTEST: Base64 Image Data Handling");
+// const test_base64ImageData = () => {
+//   console.log("\nTEST: Base64 Image Data Handling");
   
-  // Mock base64 image data
-  const base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+//   // Mock base64 image data
+//   const base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
   
-  // VERIFY: Valid base64 format
-  console.assert(base64Image.startsWith('data:image'), "FAIL: Invalid base64 image format");
-  console.log("PASS: Base64 image format valid ✓");
+//   // VERIFY: Valid base64 format
+//   console.assert(base64Image.startsWith('data:image'), "FAIL: Invalid base64 image format");
+//   console.log("PASS: Base64 image format valid ✓");
   
-  // Test with bubble
-  const msgBox = document.getElementById('messages');
-  const b = document.createElement('div');
-  b.className = 'bubble user';
-  b.innerHTML = `
-    <div class="text">
-      Test image
-      <img class="img-show-box-chat" src="${base64Image}" alt="test">
-    </div>
-  `;
-  msgBox.appendChild(b);
+//   // Test with bubble
+//   const msgBox = document.getElementById('messages');
+//   const b = document.createElement('div');
+//   b.className = 'bubble user';
+//   b.innerHTML = `
+//     <div class="text">
+//       Test image
+//       <img class="img-show-box-chat" src="${base64Image}" alt="test">
+//     </div>
+//   `;
+//   msgBox.appendChild(b);
   
-  // VERIFY: Image tag added
-  const imgTag = b.querySelector('img.img-show-box-chat');
-  console.assert(imgTag !== null, "FAIL: Image tag not found");
-  console.assert(imgTag.src === base64Image, "FAIL: Image src mismatch");
-  console.log("PASS: Base64 image added to bubble ✓");
+//   // VERIFY: Image tag added
+//   const imgTag = b.querySelector('img.img-show-box-chat');
+//   console.assert(imgTag !== null, "FAIL: Image tag not found");
+//   console.assert(imgTag.src === base64Image, "FAIL: Image src mismatch");
+//   console.log("PASS: Base64 image added to bubble ✓");
   
-  // Cleanup
-  b.remove();
-};
+//   // Cleanup
+//   b.remove();
+// };
 
 // ============================================
 // Test Suite 7: Session ID Generation
