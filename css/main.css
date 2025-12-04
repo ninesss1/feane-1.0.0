@@ -1,5 +1,6 @@
 /* Chat styling - Chulalongkorn Pink Theme */
 /* Chat styling - Soft Chulalongkorn Pink Theme */
+
 .chat-box {
   position: fixed;
   right: 20px;
@@ -15,9 +16,9 @@
 
   /* เงาอ่อนลง */
   box-shadow: 0 8px 40px rgba(219, 39, 119, 0.08),
-              0 0 20px rgba(236, 112, 172, 0.06);
+    0 0 20px rgba(236, 112, 172, 0.06);
 
-overflow: hidden;
+  overflow: hidden;
   transition: all 0.3s ease;
   font-family: 'Segoe UI', Arial, sans-serif;
   z-index: 1000;
@@ -39,7 +40,7 @@ overflow: hidden;
   padding: 0;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: chulaFloat 3s ease-in-out infinite;
-  background: linear-gradient(135deg, #db2777 0%, #ec70ac 100%);
+  background: linear-gradient(135deg, #e65ea8 0%, #e24ac1 100%);
 }
 
 @keyframes chulaFloat {
@@ -47,12 +48,12 @@ overflow: hidden;
   0%,
   100% {
     transform: translateY(0px) scale(1);
-    box-shadow: 0 8px 25px rgba(219, 39, 119, 0.25);
+    box-shadow: 0 8px 25px rgba(255, 51, 204, 0.25);
   }
 
   50% {
     transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(236, 112, 172, 0.3);
+    box-shadow: 0 12px 35px rgba(252, 59, 226, 0.3);
   }
 }
 
@@ -62,23 +63,37 @@ overflow: hidden;
   display: none;
 }
 
+/* พื้นหลังแชทรูปไอคอน */
+/* พื้นหลังแชทรูปไอคอน - Soft Header */
 .chat-box .header {
-  background: linear-gradient(135deg, #db2777 0%, #ec70ac 50%, #f5a9d0 100%);
-  color: white;
+  background: linear-gradient(135deg, #ffffff 0%, #fff7fb 50%, #f35bae 100%);
+  color: #d63384;
   padding: 14px 12px;
   font-size: 16px;
   font-weight: 700;
   text-align: center;
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+
+  min-height: 52px;
+  /* ขยายให้ไอคอนหายใจ */
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(219, 39, 119, 0.3);
+
+  /* เงานุ่มๆ ไม่แข็ง */
+  box-shadow: 0 4px 20px rgba(219, 39, 119, 0.15);
+
+  border-bottom: 1px solid rgba(255, 182, 220, 0.4);
+  /* เส้นเบาๆ */
+
   overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  /* โค้งเฉพาะส่วนบน */
 }
+
 
 .chat-box .header::after {
   content: "";
@@ -121,7 +136,7 @@ overflow: hidden;
   background-image: url('../หัว.png');
   background-size: contain;
   background-repeat: no-repeat;
-  
+
 }
 
 .chat-box .messages {
@@ -415,10 +430,14 @@ overflow: hidden;
 }
 
 @keyframes typingAnimation {
-  0%, 60%, 100% {
+
+  0%,
+  60%,
+  100% {
     opacity: 0.4;
     transform: translateY(0);
   }
+
   30% {
     opacity: 1;
     transform: translateY(-10px);
@@ -437,11 +456,14 @@ overflow: hidden;
 }
 
 @keyframes thinkingFloat {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
     opacity: 0.8;
   }
-  50% { 
+
+  50% {
     transform: translateY(-15px) scale(1.1);
     opacity: 1;
   }
@@ -453,9 +475,12 @@ overflow: hidden;
 }
 
 @keyframes thinkingPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 4px 12px rgba(219, 39, 119, 0.08);
   }
+
   50% {
     box-shadow: 0 4px 20px rgba(236, 112, 172, 0.2);
   }
@@ -473,5 +498,7 @@ overflow: hidden;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
