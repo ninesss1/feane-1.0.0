@@ -1,7 +1,15 @@
 // main.js - เวอร์ชันสมบูรณ์ล่าสุด (พร้อม avatar ทุกข้อความ + อ่านจังมาสคอต)
 
+// เซิฟเวอร์ docker ทดสอบ
 // const N8N_WEBHOOK = "http://localhost:5678/webhook-test/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*ทดสอบ*/
 const N8N_WEBHOOK = "http://localhost:5678/webhook/295ea8ef-c617-4bbe-a60c-abc457ac05e7"; /*จริง*/
+
+
+
+// อีก เซิฟเวอร์
+// const N8N_WEBHOOK = "https://rachan1412.app.n8n.cloud/webhook-test/7038eb93-e96c-46a1-b084-5c4211c3f6b0" /*ทดสอบ*/
+// const N8N_WEBHOOK = "https://rachan1412.app.n8n.cloud/webhook/7038eb93-e96c-46a1-b084-5c4211c3f6b0" /*จริง*/
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const msgBox = document.getElementById('messages');
@@ -59,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (chatEmpty && !chatEmpty.classList.contains('fade-out')) {
             chatEmpty.classList.add('fade-out');
         }
+        // บันทึก history เมื่อมีข้อความใหม่
+        saveHistory();
+    }
+
+    // ฟังก์ชัน saveHistory (ย้ายมาจาก boxstyle.js)
+    function saveHistory() {
+        var nodes = msgBox.querySelectorAll('.bubble');
+        var data = Array.prototype.map.call(nodes, function (n) {
+            return { who: n.classList.contains('user') ? 'user' : 'bot', text: n.innerHTML };
+        });
+        try { localStorage.setItem('feane_chat_history_v1', JSON.stringify(data)); } catch (e) { }
     }
 
     function setUIState(enabled) {
@@ -74,10 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const tb = document.createElement('div');
         tb.id = 'typing-bubble';
         tb.className = 'bubble bot typing';
-        tb.innerHTML = `
-            <img class="avatar bot-avatar" src="images/หนอน.png" alt="อ่านจัง" onerror="this.style.display='none'">
-            <div class="text"><span class="spinner" aria-hidden="true"></span><span class="dots">กำลังคิด</span></div>
-        `;
         msgBox.appendChild(tb);
         msgBox.scrollTop = msgBox.scrollHeight;
     }
@@ -102,6 +117,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
         addBubble(t, 'user', imageBase64);
+        // ซ่อน chatEmpty ทันทีเมื่อส่งข้อความแรก
+        if (chatEmpty && !chatEmpty.classList.contains('fade-out')) {
+            chatEmpty.classList.add('fade-out');
+        }
         input.value = '';
         if (chatImageInput) chatImageInput.value = '';
         setUIState(false);
@@ -115,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     message: t,
                     sessionId: sessionId,
                     imageBase64: imageBase64
+                    /* เพิ่มพารามิเตอร์อื่นๆ ที่จำเป็นได้ที่นี่ */
                 })
             });
 
@@ -164,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ข้อความต้อนรับจากอ่านจัง (มี avatar ด้วย)
     if (msgBox.children.length === 0) {
-        addBubble('สวัสดีค่ะ! 👋 ผมชื่ออ่านจัง มาสคอตศูนย์หนังสือจุฬาฯ<br><br>ยินดีต้อนรับมากค่ะ! 📚✨ พิมพ์ข้อความหรือถามเกี่ยวกับหนังสือ การอ่าน หรือสิ่งที่อ่านจังสามารถช่วยได้นะครับ~', 'bot');
+        addBubble('🎓 สวัสดีค่ะ! ยินดีต้อนรับสู่สตรีมหาลัยจุฬา<br><br>ผมชื่ออ่านจัง มาสคอตศูนย์หนังสือ มีอะไรให้ช่วยได้ไหมคะ? 📚💙', 'bot');
     }
 
     setUIState(true);

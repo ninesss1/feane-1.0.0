@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // 5. Header breathing Chula colors
     let colorIdx = 0;
     const chulaGradients = [
-        'linear-gradient(135deg, #003366 0%, #1a5fa0 50%, #daa520 100%)',
-        'linear-gradient(135deg, #1a5fa0 0%, #daa520 50%, #003366 100%)',
-        'linear-gradient(135deg, #daa520 0%, #003366 50%, #1a5fa0 100%)',
+        'linear-gradient(135deg, #e794e7ff 0%, #e1c0e7ff 50%, #eea2dbff 100%)',
+        'linear-gradient(135deg, #cf6bd8ff 0%, #e2a1ddff 50%, #ecececff 100%)',
+        'linear-gradient(135deg, #f085eaff 0%, #ab27afff 50%, #e63ee6ff 100%)',
     ];
     setInterval(() => {
         header.style.background = chulaGradients[colorIdx];
